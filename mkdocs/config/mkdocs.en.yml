@@ -61,6 +61,7 @@ nav:
               - userbook/wallet/delete-profile.md
           - Accounts:
               - userbook/wallet/create-account.md
+              - userbook/wallet/import-account.md
   - Developer Manual:
       - devbook/intro.md
       - Reference Guides:
