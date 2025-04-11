@@ -8,13 +8,13 @@ This action removes access to all <account:|accounts> managed by that profile on
     The accounts themselves, along with any assets they contain, remain on the blockchain.  
     If the <key pair:|private keys> to those accounts have been copied elsewhere, the assets can still be accessed from another device or wallet.
 
-If you just want to switch to a different profile, you don’t need to delete the current one.  
-The wallet supports multiple profiles. You can simply log out and log into, or create, another profile.
+If you only want to switch to a different profile, you do not need to delete the current one.  
+The wallet supports multiple profiles. You can simply log out and log into another profile, or create a new one.
 
 ## Prerequisites
 
 * Make sure you have installed the Symbol Desktop Wallet.  
-If you haven’t done that yet, see the [Installing the Wallet](./install.md) guide.
+If you have not done that yet, see the [Installing the Wallet](./install.md) guide.
 
 * If you want to keep access to the accounts from the profile you are deleting,
     [export the profile](./export-profile.md) first and store the backup in a safe location.

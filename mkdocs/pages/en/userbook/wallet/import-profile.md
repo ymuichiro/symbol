@@ -4,19 +4,19 @@ title: Importing a Profile
 
 # Importing an Existing Profile
 
-This page explains how to restore an **existing** profile from a previous installation of the Symbol Desktop Wallet, or even from another compatible wallet.  
-To learn what is a profile, or to create a new one from scratch, follow the [Creating a Profile](./create-profile.md) tutorial instead.
+This page explains how to restore an **existing** <profile:> from a previous installation of the Symbol Desktop Wallet, or from another compatible wallet.  
+To learn what a profile is, or to create a new one from scratch, follow the [Creating a Profile](./create-profile.md) tutorial instead.
 
 ## Prerequisites
 
 * Make sure you have installed the Symbol Desktop Wallet.  
-If you haven’t done that yet, see the [Installing the Wallet](./install.md) guide.
+If you have not done that yet, see the [Installing the Wallet](./install.md) guide.
 
 * Make sure you understand what is a <profile:>.
 
 * You will need the <mnemonic phrase:> for the profile you want to restore.  
 Check the documentation for the wallet you used to create it.  
-If the profile was originally created in the Symbol Desktop Wallet, you can find the instructions in the [Exporting a Profile](./export-profile.md) tutorial.
+If the profile was originally created in the Symbol Desktop Wallet, see the [Exporting a Profile](./export-profile.md) tutorial for instructions.
 
 ## How to Import an Existing Profile
 
@@ -48,10 +48,11 @@ Click **Next**.
 {{ tutorial.step_end() }}
 
 {{ tutorial.step_begin("screenshots/import-profile-3.jpg") }}
-Enter the mnemonic phrase for the profile to restore.
+Enter the mnemonic phrase for the profile you want to restore.
 
 This is the secret phrase you received when you first created the profile.  
-Make sure the words are in the correct order and separated by spaces, or the Next button will not be enabled.
+Make sure the words are in the correct order and separated by spaces.  
+The **Next** button will remain disabled until the phrase is valid.
 
 Click **Next**.
 {{ tutorial.step_end() }}
@@ -61,10 +62,10 @@ Select which accounts to restore.
 
 The wallet will scan the mnemonic for associated accounts and let you choose which ones to include in the profile.
 
-Some of the associated accounts might have never been used, so, to help you decide which ones to recover,
-their current XYM balances are shown.
+Some of these accounts may have never been used.
+To help you decide which ones to recover, their current XYM balances are shown.
 
-The ones you do not select now can be added later.
+You can add any accounts you do not select now at a later time.  
 See the [Creating an Account](./create-account.md) tutorial.
 
 Click **Next** when you are done selecting accounts.

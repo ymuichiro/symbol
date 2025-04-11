@@ -2,9 +2,9 @@
 title: Creating a Profile
 ---
 
-# Creating a new Profile
+# Creating a New Profile
 
-This page explains what is a wallet profile and how to create a **new** one from scratch.  
+This page explains what a wallet profile is and how to create a **new** one from scratch.  
 If you have a backup of a previous profile and want to restore it, follow the [Importing a Profile](./import-profile.md) tutorial instead.
 
 ## What Is a Profile
@@ -24,13 +24,13 @@ Each profile includes:
 * A password to protect access and encrypt the profile contents.
 * Optional metadata, such as a profile name and password hint, for user convenience.
 
-Profiles keep things organized and separate, and you can have multiple profiles on the same machine.
+Profiles help keep things organized and separate, and you can have multiple profiles on the same machine.
 For example, one for personal use and one for work, each with its own accounts and settings.
 
 ## Prerequisites
 
 * Make sure you have installed the Symbol Desktop Wallet.  
-If you haven’t done that yet, see the [Installing the Wallet](./install.md) guide.
+If you have not done that yet, see the [Installing the Wallet](./install.md) guide.
 
 ## How to Create a Profile
 
@@ -102,6 +102,12 @@ Read the safety tips, accept the Terms and Conditions, and click **Finish**.
 You will be taken to the main screen of the wallet:
 
 ![Profile created successfully](screenshots/create-profile-8.jpg)
+
+A first account has already been generated from the seed phrase, so you can start working right away.  
+For example, you can share the account’s address to receive funds.
+
+If you go to the **Accounts** tab, you will see this account is named **Seed Account 1**.
+You can create more accounts later, and they will be derived from the same seed.
 
 ## Next Steps
 

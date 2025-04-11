@@ -1,7 +1,7 @@
 # Exporting a Profile
 
 This page explains how to export a <profile:> and all the accounts it contains from the Symbol Desktop Wallet.  
-Exporting a profile lets you create a backup or use the same accounts on another device by [importing the profile](./import-profile.md) there.
+Exporting a profile allows you to create a backup or use the same accounts on another device by [importing the profile](./import-profile.md) there.
 
 The Symbol Desktop Wallet exports profiles as paper wallets:
 
@@ -12,12 +12,12 @@ Paper Wallet
     <mnemonic phrase:|mnemonic phrases>, or all of them.
 
     Paper wallets are less convenient than digital backups because the information must be entered manually.  
-    However, they are more secure since they are not stored or accessed online.
+    However, they are more secure because they are not stored or accessed online.
 
 ## Prerequisites
 
 * Make sure you have installed the Symbol Desktop Wallet.  
-If you haven’t done that yet, see the [Installing the Wallet](./install.md) guide.
+If you have not done that yet, see the [Installing the Wallet](./install.md) guide.
 
 * You must already have a profile set up in the Symbol Desktop Wallet, either by [creating a new one](./create-profile.md) or [importing an existing one](./import-profile.md).
 
@@ -47,7 +47,7 @@ Enter your profile password to confirm access.
 Click the **:material-download: Download** button.
 
 You will receive a PDF document containing a <paper wallet:>.  
-This document should be printed and then deleted from your device.
+This document should be printed and then deleted from your device for security.
 {{ tutorial.step_end() }}
 
 {{ tutorial.step_begin("screenshots/export-profile-5.jpg") }}
@@ -59,7 +59,7 @@ You can use this phrase to restore all accounts derived from it.
 {{ tutorial.step_begin("screenshots/export-profile-6.jpg") }}
 This image shows an example of a paper wallet containing an individual account.
 
-The account may have been generated from a mnemonic phrase or imported directly from a private key.
+The account may have been generated from a mnemonic phrase or imported directly from a <key pair:|private key>.
 {{ tutorial.step_end() }}
 
 {{ tutorial.list_end() }}
