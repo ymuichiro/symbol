@@ -31,13 +31,13 @@ From the wallet’s main screen, go to the **Accounts** tab.
 {{ tutorial.step_end() }}
 
 {{ tutorial.step_begin("screenshots/create-account-1.jpg") }}
-Click **+ Add Account**, then select **New Account**.
+Click **:material-plus-circle: Add an account** at the bottom of the screen.
 {{ tutorial.step_end() }}
 
 {{ tutorial.step_begin("screenshots/create-account-2.jpg") }}
 Configure the new account by filling out the form.
 
-Leave the default option selected in **Select the Type of Account**:  
+Leave the default option selected in **Select the Type of Account**:
 **"I want to create a seed account for my profile"**.
 
 Enter a name in the **New Account Name** field.  
@@ -50,7 +50,8 @@ Then click **Confirm** to create the account.
 
 {{ tutorial.list_end() }}
 
-The new account will be generated from your profile’s mnemonic phrase and added to your list of managed accounts.
+The new account will be generated from your profile’s mnemonic phrase and added to your list of managed accounts,
+in the **Seed accounts** section.
 
 ![New account created](screenshots/create-account-3.jpg)
 
