@@ -58,6 +58,62 @@ That said, if understanding a document requires previous knowledge, you must alw
 * Always specify the language for code blocks so that neither the syntax highlighter nor the text editor must guess.
     If no specific type makes sense, just use `text`.
 
+## Special Macros
+
+A few macros have been created to simplify repeated process like tutorial steps and multi-language code snippets.
+
+### Tutorial Steps
+
+These macros create a table with each row beginning with a big-numbered description and a floating screenshot on the right.
+When clicked, the image is zoomed while the description is still shown.
+Steps can be navigated while the image is zoomed.
+
+```jinja
+{% import 'tutorial.jinja2' as tutorial %}
+
+{{ tutorial.list_begin() }}
+{{ tutorial.step_begin("screenshots/create-profile-0.jpg") }}
+Write here the description for this step.
+{{ tutorial.step_end() }}
+{{ tutorial.list_end() }}
+```
+
+[Usage example](./pages/en/userbook/wallet/create-profile.md).
+
+Add as many `step_begin()` / `step_end()` pairs as required.
+
+**Lists do not work correctly in the description**, because they are an HTML block element and do not flow around the floating picture.
+
+### Multi-Language Code Snippets
+
+These macros create a tab group with a code block and optional caption.
+
+```jinja
+{% import 'tutorial.jinja2' as tutorial %}
+
+{{ tutorial.code_full("devbook/hello-world", ["py", "js", "tjs"]) }}
+{{ tutorial.code_snippet(["py:4:4", "js:4:4", "tjs:5:5"])}}
+{{ tutorial.code_snippet(["py:6:16", "js:6:16",
+"tjs:7:24:The <TS:TransferTransactionV1Descriptor> constructor only accepts parameters of the right type, \
+making it easier to use during development. We can do lists:\n
+* One **black**\n
+* Two"]) }}
+```
+
+[Usage example](./pages/en/devbook/hello-world.md).
+
+`code_full` inserts the whole source file, for all the listed languages, and sets the file name to be used by the snippet macros.
+Each language tab can have an optional caption, separated from the language code by a colon.
+
+`code_snippet` inserts a range of lines, with an optional caption.
+
+**Captions allow complex markdown like lists and term links, but they are formatted differently.**
+Lines must be continued by escaping the line break, and line breaks are inserted with \n.
+See the example above.
+
+Supported languages are: Python (`py`), JavaScript (`js`), and JavaScript with strongly-typed descriptors (`tjs`).
+See [`tutorial.jinja2`](./templates/macros/tutorial.jinja2) for details.
+
 ## Technical Writing
 
 * Use American English (`organize` instead of `organise`, `behavior` instead of `behaviour`, etc.)

@@ -22,28 +22,36 @@
 {%- endmacro %}
 
 {% macro code_full(filename, langs) -%}
-{% set ns.filename = filename %}
-{% for l in langs %}
+{%- set ns.filename = filename -%}
+{%- for entry in langs -%}
+{%- set parts = entry.split(":", 1) -%}
+{%- set l = parts[0] -%}
+{%- set caption = parts[1] if parts|length > 1 else None -%}
 === "{{lang_name[l]}}"
 
     ```{{lang_code[l]}} linenums="1"
     --8<-- "{{filename}}.{{lang_ext[l]}}"
     ```
 
+    {% if caption %}{{ caption | indent }}{% endif %}
+
 {% endfor %}
 {%- endmacro %}
 
 {% macro code_snippet(langs) -%}
-{% for lparams in langs %}
-{%- set lparam = lparams.split(":") -%}
-{%- set l = lparam[0] -%}
-{%- set start = lparam[1] -%}
-{%- set end = lparam[2] -%}
+{%- for entry in langs -%}
+{%- set parts = entry.split(":", 3) -%}
+{%- set l = parts[0] -%}
+{%- set start = parts[1] -%}
+{%- set end = parts[2] -%}
+{%- set caption = parts[3] if parts|length > 3 else None -%}
 === "{{lang_name[l]}}"
 
     ```{{lang_code[l]}} linenums="{{start}}"
     --8<-- "{{ns.filename}}.{{lang_ext[l]}}:{{start}}:{{end}}"
     ```
+
+    {% if caption %}{{ caption | indent }}{% endif %}
 
 {% endfor %}
 {%- endmacro %}
