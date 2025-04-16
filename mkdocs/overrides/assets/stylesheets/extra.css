@@ -433,3 +433,10 @@ code.doc-symbol-interface::after {
 	border-top: 1px solid var(--md-default-bg-color--light);
 	border-bottom: 1px solid var(--md-default-bg-color--light);
 }
+
+/* Links around code blocks */
+.md-typeset p:has(.source-link) {
+	margin-top: 0;
+	font-size: small;
+	float: right;
+}

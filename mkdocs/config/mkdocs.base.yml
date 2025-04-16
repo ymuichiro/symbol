@@ -134,6 +134,7 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.com/invite/xymcity
   symbol:
+    branch: mkdocs/content-templates
     java-sdk:
       include-prefixes: [classorg, interfaceorg]
     ts-sdk:

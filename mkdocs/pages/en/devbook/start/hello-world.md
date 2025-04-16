@@ -20,7 +20,7 @@ The example is implemented in both Python and JavaScript.
 
 ## Full Code
 
-{% import 'tutorial.jinja2' as tutorial %}
+{% import 'tutorial.jinja2' as tutorial with context %}
 
 {{ tutorial.code_full("devbook/start/hello-world", ["py", "js", "tjs"]) }}
 
