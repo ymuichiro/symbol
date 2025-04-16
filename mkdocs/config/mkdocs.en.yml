@@ -65,6 +65,9 @@ nav:
               - userbook/wallet/delete-account.md
   - Developer Manual:
       - devbook/intro.md
+      - Getting Started:
+          - devbook/start/setup.md
+          - devbook/start/hello-world.md
       - Reference Guides:
           - Python SDK: devbook/reference/py/
           - TypeScript SDK: devbook/reference/ts/
