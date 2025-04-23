@@ -9,5 +9,6 @@ set -ex
 		--type-not=markdown \
 		--type-not=rst \
 		--type-not=yaml \
+		--type-not=jinja \
 		'^  ' "$(git rev-parse --show-toplevel)" \
 	| grep -vE '\.eslintrc|testnet/summary\.txt|.git/hooks/.*\.sample'
