@@ -2,72 +2,57 @@
 title: Hello World
 ---
 
-# Creating a Hello World Application
+# Creating a Hello World Transaction
 
-## Introduction
-
-In this tutorial, you will learn how to create, sign, and serialize a basic Symbol transaction using code.
-
-The goal is to generate a **transfer transaction** and produce a signed payload ready to be announced to the blockchain.
-
-We will:
-
-* Create a transaction object
-* Sign it with a private key
-* Serialize it to a JSON payload
-
-The example is implemented in both Python and JavaScript.
+In this tutorial, a transfer transaction is created, signed, announced to the network, and confirmed using both Python and JavaScript.  
+The code dynamically fetches the current network time and recommended fees, constructs the transaction, and polls until it is confirmed.
 
 ## Full Code
 
 {% import 'tutorial.jinja2' as tutorial with context %}
 
-{{ tutorial.code_full("devbook/start/hello-world", ["py", "js", "tjs"]) }}
+{{ tutorial.code_full("devbook/start/hello-world", [
+  "py:Python version using urllib and symbolchain",
+  "js:JavaScript version using fetch and chained promises"
+]) }}
 
 ## Code Explanation
 
-### 1. Creating the Facade
+### Fetching Network Time
 
-The `SymbolFacade` object is the main entry point for creating and signing transactions.
-It must be initialized with the target network: `'testnet'` or `'mainnet'`.
+{{ tutorial.code_snippet(["py:22:29", "js:20:28"]) }}
 
-{{ tutorial.code_snippet(["py:4:4", "js:4:4", "tjs:5:5"])}}
+### Fetching Recommended Fees
 
-### 2. Creating the Transaction
+{{ tutorial.code_snippet(["py:31:39", "js:30:38"]) }}
 
-This example builds a **transfer transaction**, the simplest transaction type.
-It includes the signer, recipient, a mosaic, a deadline, and a fee.
+### Building the Transaction
 
-{{ tutorial.code_snippet(["py:6:16", "js:6:16",
-"tjs:7:24:The <TS:TransferTransactionV1Descriptor> constructor only accepts parameters of the right type, \
-making it easier to use during development. We can do lists:\n
-* One **black**\n
-* Two"])}}
+{{ tutorial.code_snippet(["py:41:54", 'js:40:52:\
+??? info "Typed descriptor" \n\
+    You can also use the <TS:SymbolFacade.createTransactionFromTypedDescriptor> \
+    method and provide a <TS:TransferTransactionV1Descriptor>.\n\n\
+    Be warned that the timestamps is relative']) }}
 
-### 3. Signing the Transaction
+### Signing and Serializing
 
-We use a known private key to create a <key pair:|KeyPair>, which can sign the transaction.
-The result is a cryptographic signature tied to the transaction contents.
+{{ tutorial.code_snippet(["py:56:61", "js:54:59"]) }}
 
-{{ tutorial.code_snippet(["py:18:21", "js:18:21", "tjs:26:29"])}}
+### Announcing the Transaction
 
-### 4. Attaching the Signature
+{{ tutorial.code_snippet(["py:63:73", "js:61:69"]) }}
 
-After signing, we combine the transaction and signature into a final payload.
+### Polling for Confirmation
 
-{{ tutorial.code_snippet(["py:23:24", "js:23:24", "tjs:31:32"])}}
+{{ tutorial.code_snippet(["py:75:96", "js:71:116"]) }}
 
-This payload is ready to be announced to a Symbol node using the [transaction announcement API](../api-reference.md).
+## Output
+
+```text
+--8<-- "devbook/start/hello-world.log"
+```
 
 ## Conclusion
 
-You have now created, signed, and serialized a basic Symbol transfer transaction using code.
-This is the foundation for automating account operations, sending mosaics, or building larger blockchain applications.
-
-## Next Steps
-
-* Try changing the `recipientAddress` or `amount` and running the code again.
-
-* Use the JSON payload to [announce the transaction](./announce-transaction.md) to the network.
-
-* Learn more about <transaction:> structure and <mosaic:> handling in the [Textbook](../../textbook/intro.md).
+This example demonstrates how to programmatically create, sign, and confirm a Symbol transfer transaction using live network data.  
+It covers proper fee calculation, deadline handling, and polling for status without assuming fixed values.
