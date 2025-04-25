@@ -11,45 +11,44 @@ The code dynamically fetches the current network time and recommended fees, cons
 
 {% import 'tutorial.jinja2' as tutorial with context %}
 
-{{ tutorial.code_full("devbook/start/hello-world", [
-  "py:Python version using urllib and symbolchain",
-  "js:JavaScript version using fetch and chained promises"
-]) }}
+{{ tutorial.code_full('devbook/start/hello-world', ['py', 'js']) }}
 
 ## Code Explanation
 
 ### Fetching Network Time
 
-{{ tutorial.code_snippet(["py:22:29", "js:20:28"]) }}
+{{ tutorial.code_snippet(['py:22:29', 'js:20:28']) }}
 
 ### Fetching Recommended Fees
 
-{{ tutorial.code_snippet(["py:31:39", "js:30:38"]) }}
+{{ tutorial.code_snippet(['py:31:39', 'js:30:38']) }}
 
 ### Building the Transaction
 
-{{ tutorial.code_snippet(["py:41:54", 'js:40:52:\
-??? info "Typed descriptor" \n\
-    You can also use the <TS:SymbolFacade.createTransactionFromTypedDescriptor> \
-    method and provide a <TS:TransferTransactionV1Descriptor>.\n\n\
-    Be warned that the timestamps is relative']) }}
+{{ tutorial.code_snippet({
+  'py': { 'range': [41, 54] },
+  'js': {
+    'range': [40, 52],
+    'descriptor': 'TransferTransactionV1Descriptor'
+  }
+}) }}
 
 ### Signing and Serializing
 
-{{ tutorial.code_snippet(["py:56:61", "js:54:59"]) }}
+{{ tutorial.code_snippet(['py:56:61', 'js:54:59']) }}
 
 ### Announcing the Transaction
 
-{{ tutorial.code_snippet(["py:63:73", "js:61:69"]) }}
+{{ tutorial.code_snippet(['py:63:73', 'js:61:69']) }}
 
 ### Polling for Confirmation
 
-{{ tutorial.code_snippet(["py:75:96", "js:71:116"]) }}
+{{ tutorial.code_snippet(['py:75:96', 'js:71:116']) }}
 
 ## Output
 
 ```text
---8<-- "devbook/start/hello-world.log"
+--8<-- 'devbook/start/hello-world.log'
 ```
 
 ## Conclusion

@@ -23,10 +23,19 @@
 
 {% macro code_full(filename, langs) -%}
 {%- set ns.filename = filename -%}
-{%- for entry in langs -%}
-{%- set parts = entry.split(":", 1) -%}
-{%- set l = parts[0] -%}
-{%- set caption = parts[1] if parts|length > 1 else None -%}
+
+{# Convert list to dictionary with empty values #}
+{%- if langs is sequence -%}
+    {%- set parsed = {} -%}
+    {%- for l in langs -%}
+        {%- set _ = parsed.update({ l: {} }) -%}
+    {%- endfor -%}
+    {%- set langs = parsed %}
+{%- endif -%}
+
+{# Now iterate over the normalized dictionary #}
+{%- for l, props in langs.items() -%}
+{%- set caption = props.caption if props.caption is defined else None -%}
 === "{{lang_name[l]}}"
 
     ```{{lang_code[l]}} linenums="1"
@@ -41,17 +50,48 @@
 {%- endmacro %}
 
 {% macro code_snippet(langs) -%}
-{%- for entry in langs -%}
-{%- set parts = entry.split(":", 3) -%}
-{%- set l = parts[0] -%}
-{%- set start = parts[1] -%}
-{%- set end = parts[2] -%}
-{%- set caption = parts[3] if parts|length > 3 else None -%}
+{# Normalize: if langs is a list of "lang:start:end(:descriptor)" strings, convert to dict #}
+{%- if langs is sequence and langs[0] is string -%}
+    {%- set parsed = {} %}
+    {%- for entry in langs -%}
+        {%- set parts = entry.split(":") %}
+        {%- set l = parts[0] %}
+        {%- set range = [parts[1]|int, parts[2]|int] %}
+        {%- set descriptor = parts[3] if parts|length > 3 else none %}
+        {%- set _ = parsed.update({l: {"range": range, "descriptor": descriptor} }) %}
+    {%- endfor %}
+    {%- set langs = parsed %}
+{%- endif %}
+
+{# Now iterate over the normalized dictionary #}
+{%- for l, props in langs.items() -%}
+{%- set start = props.range[0] -%}
+{%- set end = props.range[1] -%}
+{%- set caption = props.caption if props.caption is defined else None -%}
+{%- set descriptor = props.descriptor if props.descriptor is defined else None -%}
 === "{{lang_name[l]}}"
 
     ```{{lang_code[l]}} linenums="{{start}}"
     --8<-- "{{ns.filename}}.{{lang_ext[l]}}:{{start}}:{{end}}"
     ```
+
+    {% if descriptor -%}
+    ??? info "Typed descriptor: {{descriptor}}"
+        <TS:SymbolFacade.createTransactionFromTypedDescriptor> is a typed alternative to
+        <TS:SymbolTransactionFactory.create>.
+        It uses structured, type-safe parameters, making it easier to construct transactions correctly and reduce the
+        chance of mistakes.
+
+        For example, the snippet above could use the <TS:{{descriptor}}> to define the transaction in a type-safe way.
+
+        ---
+
+        **Caution**:
+        The `deadline` parameter of the typed version is relative to the local system time, not the network time.
+        This removes the need to fetch the network time, but can lead to drift if the system clock is inaccurate.
+
+        Applications should periodically synchronize with the network time to ensure deadlines are calculated correctly.
+    {% endif %}
 
     {% if caption %}{{ caption | indent }}{% endif %}
 
